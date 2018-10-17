@@ -1,7 +1,7 @@
 # BinaryTreeExtractor
 Extracts a binary tree from specially formatted string and exports it as a png file representing the tree.
 
-The string format looks like below example:
+The string format looks like the example below:
 
     d(b(c)(a))(f(k)(e))
 
