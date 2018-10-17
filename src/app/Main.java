@@ -13,6 +13,7 @@ public class Main {
         //daa(baa(caa)(aaa))(faa(kaa)(eaa))
         BinaryTree tree = BinaryTreeParser.treeFromFormatString(getInput("BinaryTree'nizi formatlı bicimde giriniz:"));
         BinaryTreeExporter.export(tree, BinaryTreeExporter.FILE_TYPE.PNG);
+        tree.displayTree();
         System.exit(0);
     }
 
