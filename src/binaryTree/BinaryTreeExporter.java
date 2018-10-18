@@ -175,17 +175,23 @@ public class BinaryTreeExporter {
             ++level;
         }
 
-        /*
-            Dosya kayıt yeri seçicisi aç ve kullanıcıdan dosya kayıt yolunu al.
-            Graphics2d kullanılarak çizilmiş olan BufferedImage objesini dosyaya yaz.
-         */
+        //Graphics2d kullanılarak oluşturulmuş bufferedImage objesini export et.
+        exportBufferedImage(buffImage, filetype);
+    }
+
+    /*
+        Dosya kayıt yeri seçicisi aç ve kullanıcıdan dosya kayıt yolunu al.
+        Graphics2d kullanılarak çizilmiş olan BufferedImage objesini dosyaya yaz.
+    */
+    private static void exportBufferedImage(BufferedImage buffImage, FILE_TYPE filetype){
         try {
             JFrame frame = new JFrame();
             frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            frame.setSize(1000, 1000);
 
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setDialogTitle("Dosyayı kaydetmek istediğiniz yeri seçin");
+
+            frame.setVisible(true);
 
             int userSelection = fileChooser.showSaveDialog(frame);
             if (userSelection == JFileChooser.APPROVE_OPTION) {
