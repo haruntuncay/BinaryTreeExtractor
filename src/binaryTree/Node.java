@@ -78,7 +78,6 @@ public class Node{
         point.setLocation(point.getX(), y);
     }
 
-
     @Override
     public String toString(){
         return value;
@@ -86,7 +85,11 @@ public class Node{
 
     @Override
     public boolean equals(Object other){
-        Node node = (Node) other;
-        return value.compareTo(node.getValue()) == 0;
+        if(other instanceof Node){
+            Node node = (Node) other;
+            return value.compareTo(node.getValue()) == 0;
+        }
+
+        return super.equals(other);
     }
 }
