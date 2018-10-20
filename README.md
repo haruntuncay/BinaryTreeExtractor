@@ -3,21 +3,18 @@ Extracts a binary tree from specially formatted string and exports it as a png f
 
 The string format looks like the example below:
 
-    d(b(c)(a))(f(k)(e))
+    daa(baa(caa)(aaa))(faa(kaa)(eaa))
 
 Which represents the tree below: (where "d" is the root node)
 
 
-
-                                d                
-                                
-                b                              f     
-                
-        c              a              k              e     
+                                daa                                                              
+                baa                              faa                              
+        caa              aaa              kaa              eaa       
         
 
 Outputs a png file like below:
-![png output](https://github.com/haruntuncay/BinaryTreeExtractor/blob/master/images/binaryAsPng.png)
+![png output](https://github.com/haruntuncay/BinaryTreeExtractor/blob/master/images/binaryAsPngImproved.png)
 
 Saves png file to chosen location:
 
