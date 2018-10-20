@@ -5,7 +5,7 @@ The string format looks like the example below:
 
     daa(baa(caa)(aaa))(faa(kaa)(eaa))
 
-Which represents the tree below: (where "d" is the root node)
+Which represents the tree below: (where "daa" is the root node)
 
 
                                 daa                                                              
