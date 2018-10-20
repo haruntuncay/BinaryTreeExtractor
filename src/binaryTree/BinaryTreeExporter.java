@@ -69,48 +69,49 @@ public class BinaryTreeExporter {
         Node'ları ve parent'ları ile bağlantılarını çizen metod.
      */
     private static void drawNode(Graphics2D g2d, Node node, int level, int nodePosition, int nodeCountAtLevel){
-        if(node != null){
-            //Node'ların üst boşluklarını hesapla.
-            int topMargin = HEIGHT_PER_LEVEL * level + 30;
-            /*
-                Node'lar ile köşelerin arasındaki ve Node'ların birbiri arasındaki boşluğu hesapla.
-                Toplam WIDTH alanının, geçerli seviyedeki(level) node sayısı + 1'e bölümüne eşittir.
-            */
-            int leftMargin = IMAGE_WIDTH / (nodeCountAtLevel + 1);
-            //Yarıçap.
-            int radius = NODE_DIAMETER / 2;
+        if(node == null)
+            return;
+        
+        //Node'ların üst boşluklarını hesapla.
+        int topMargin = HEIGHT_PER_LEVEL * level + 30;
+        /*
+            Node'lar ile köşelerin arasındaki ve Node'ların birbiri arasındaki boşluğu hesapla.
+            Toplam WIDTH alanının, geçerli seviyedeki(level) node sayısı + 1'e bölümüne eşittir.
+        */
+        int leftMargin = IMAGE_WIDTH / (nodeCountAtLevel + 1);
+        //Yarıçap.
+        int radius = NODE_DIAMETER / 2;
 
-            //Çemberin merkezi.
-            node.setX(leftMargin * nodePosition);
-            node.setY(topMargin);
+        //Çemberin merkezi.
+        node.setX(leftMargin * nodePosition);
+        node.setY(topMargin);
 
-            /*
-                Node'u çember olarak çiz.
-                Graphics2d.drawOval fonksiyonu bir dikdörtgen çizip çemberi onun içine çiziğinden,
-                    fonksiyona direk çemberin merkezini veremiyoruz.
-                    Onun yerine çemberi içine alacak bir dörtgen koordinatı veriyoruz.
-                Merkezi koordinatlardan (node.getX, node.getY) radius kadar geri geldiğimizde
-                    istenilen dörtgenin sol üst noktasına varıyoruz.
-                Bu noktadan her iki yöne (x,y) NODE_DIAMETER kadar ilerlediğimizde, istediğimiz çemberi saran
-                    dörtgeni elde etmiş oluyoruz.
-             */
-            g2d.drawOval(node.getX() - radius, node.getY() - radius, NODE_DIAMETER, NODE_DIAMETER);
-            //Node value string'ini çiz ve ortalamaya çalış.
-            int nodeValueLength = node.getValue().length();
-            g2d.drawString(node.getValue(), node.getX() - 5 * (nodeValueLength - 1), node.getY() + 5);
+        /*
+            Node'u çember olarak çiz.
+            Graphics2d.drawOval fonksiyonu bir dikdörtgen çizip çemberi onun içine çiziğinden,
+                fonksiyona direk çemberin merkezini veremiyoruz.
+                Onun yerine çemberi içine alacak bir dörtgen koordinatı veriyoruz.
+            Merkezi koordinatlardan (node.getX, node.getY) radius kadar geri geldiğimizde
+                istenilen dörtgenin sol üst noktasına varıyoruz.
+            Bu noktadan her iki yöne (x,y) NODE_DIAMETER kadar ilerlediğimizde, istediğimiz çemberi saran
+                dörtgeni elde etmiş oluyoruz.
+         */
+        g2d.drawOval(node.getX() - radius, node.getY() - radius, NODE_DIAMETER, NODE_DIAMETER);
+        //Node value string'ini çiz ve ortalamaya çalış.
+        int nodeValueLength = node.getValue().length();
+        g2d.drawString(node.getValue(), node.getX() - 5 * (nodeValueLength - 1), node.getY() + 5);
 
-            //Node ile parent'ı arasındaki edge'i çiz.
-            Node parent;
-            if((parent = node.getParent()) != null){
-                double angle = Math.atan2(parent.getY() - node.getY(), parent.getX() - node.getX());
-                int x = (int)(radius * Math.cos(angle));
-                int y = (int)(radius * Math.sin(angle));
+        //Node ile parent'ı arasındaki edge'i çiz.
+        Node parent;
+        if((parent = node.getParent()) != null){
+            double angle = Math.atan2(parent.getY() - node.getY(), parent.getX() - node.getX());
+            int x = (int)(radius * Math.cos(angle));
+            int y = (int)(radius * Math.sin(angle));
 
-                g2d.drawLine(parent.getX() - x,
-                        parent.getY() - y,
-                        node.getX() + x,
-                        node.getY() + y);
-            }
+            g2d.drawLine(parent.getX() - x,
+                    parent.getY() - y,
+                    node.getX() + x,
+                    node.getY() + y);
         }
     }
 
