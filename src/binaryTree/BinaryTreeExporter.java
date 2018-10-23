@@ -166,7 +166,8 @@ public class BinaryTreeExporter {
                         Eğer sağ veya sol çocuktan biri varsa, yeni seviye(level) gerekiceği için,
                             isRowEmpty'yi false yap.
                     */
-                    isRowEmpty = temp.getLeft() == null && temp.getRight() == null;
+                    if(temp.getLeft() != null || temp.getRight() != null)
+                        isRowEmpty = false;
                 }else{
                     innerList.add(null);
                     innerList.add(null);
@@ -180,11 +181,9 @@ public class BinaryTreeExporter {
                     bulunan değer Node'un sol boşluğu olacak. (leftMargin = position * width);
              */
             int position = 1;
-            //InnerList'ten çekilen çocukları çizmek için kullanılacak referans.
+
+            //InnerList'teki Node'ları çek, çiz ve outerList'e ata.
             Node temp;
-            /*
-                InnerList'teki Node'ları çek, çiz ve outerList'e ata.
-             */
             while(!innerList.isEmpty()){
                 temp = innerList.remove(0);
                 drawNode(g2d, temp, level, position, nodeCount);

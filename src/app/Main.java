@@ -29,6 +29,6 @@ public class Main {
             input = "daa(baa(caa)(aaa))(faa(kaa)(eaa))";
         }
 
-        return input;
+        return input.trim();
     }
 }
